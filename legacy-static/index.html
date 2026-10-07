@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bhuvansai · AI engineer</title>
+<meta name="description" content="Portfolio of Bhuvansai, an AI engineer who builds agents that plan, call tools, and finish the job.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='7' fill='%236B4EFF'/%3E%3Cpath d='M5 12 19 6l-4.5 6L19 18z' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');try{var t=new URLSearchParams(location.search).get('theme')||localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- reusable agent glyph -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="plane" viewBox="0 0 24 24"><path d="M22 12 2 3l6 9-6 9z" fill="currentColor"/><path d="M8 12h8" style="stroke:var(--bg)" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 20 20"><path d="M4 10h12m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Bhuvansai, home"><span class="logo-mark"><svg width="16" height="16"><use href="#plane"/></svg></span>Bhuvansai</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#about">About</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#education">Education</a><span class="nav-pill" aria-hidden="true"></span>
+  </nav>
+  <div class="themes" id="themes" role="group" aria-label="Theme">
+    <button type="button" data-t="daylight" style="--sw:#F4F4F6" aria-label="Daylight theme" title="Daylight"></button>
+    <button type="button" data-t="midnight" style="--sw:#0A0A0F" aria-label="Midnight theme" title="Midnight"></button>
+    <button type="button" data-t="citrus" style="--sw:#DDF84A" aria-label="Citrus theme" title="Citrus"></button>
+    <button type="button" data-t="grape" style="--sw:#3B1FD6" aria-label="Grape theme" title="Grape"></button>
+  </div>
+  <button class="nav-icon" id="paletteBtn" type="button" aria-label="Open command menu (Ctrl K)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="m13.5 13.5 4 4"/></svg></button>
+  <a class="btn dark sm" href="#contact" data-magnet>Let's talk</a>
+</header>
+
+<nav class="rail" id="rail" aria-label="Page progress"></nav>
+
+<main id="main">
+
+  <!-- HERO / planner -->
+  <section class="hero" id="top" data-section="planner" aria-labelledby="h-hero">
+    <div class="hero-graph" id="heroGraph" aria-hidden="true">
+      <svg class="hg-svg" id="hgSvg"><g id="hgEdges"></g><g id="hgVias"></g><g id="hgAgents"></g></svg>
+      <div class="gn planner"><div class="gn-in"><i class="gn-dot"></i><b>Planner</b><span>plans the route</span></div></div>
+      <div class="gn tools"><div class="gn-in"><i class="gn-dot"></i><b>Tools</b><span>does the work</span></div></div>
+      <div class="gn retriever"><div class="gn-in"><i class="gn-dot"></i><b>Retriever</b><span>finds context</span></div></div>
+      <div class="gn verifier"><div class="gn-in"><i class="gn-dot"></i><b>Verifier</b><span>checks output</span></div></div>
+      <div class="gn you"><div class="gn-in"><i class="gn-dot"></i><b>You</b><span>goal delivered</span></div></div>
+    </div>
+    <div class="hero-copy">
+      <p class="hero-tag"><span class="avatar" aria-hidden="true"><img src="assets/photo.jpg" alt="" width="28" height="28" onerror="this.remove()">B</span>AI engineer · [Location] · [Open to roles]</p>
+      <h1 class="display" id="h-hero" data-split>This portfolio is an agent run. You're the goal.</h1>
+      <p class="hero-sub">I'm Bhuvansai, an AI engineer. The planner, retriever, tools, and verifier up here will walk you through what I've built.</p>
+      <div class="hero-cta">
+        <a class="btn dark" href="#about" data-magnet>Start the run <svg width="18" height="18"><use href="#arrow"/></svg></a>
+        <button class="btn ghost" type="button" id="heroChat" data-magnet>Ask my agent</button>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to about"><svg width="22" height="44" viewBox="0 0 22 44" fill="none"><rect x="1" y="1" width="20" height="42" rx="10" stroke="currentColor" stroke-width="1.6"/><circle class="wheel" cx="11" cy="12" r="3" fill="currentColor"/></svg></a>
+  </section>
+
+  <!-- MARQUEE / skills -->
+  <section class="marquee" aria-label="Skills" id="skills">
+    <div class="mq-row" data-dir="1"></div>
+    <div class="mq-row" data-dir="-1"></div>
+    <ul class="sr-list" id="skillSource">
+      <li data-g="a">Tool calling</li><li data-g="a">LangGraph</li><li data-g="a">Prompt design</li><li data-g="a">LLM evaluation</li><li data-g="a">Agent memory</li>
+      <li data-g="b">Vector search</li><li data-g="b">Chunking and reranking</li><li data-g="b">Embeddings</li><li data-g="b">Hybrid retrieval</li>
+      <li data-g="c">PyTorch</li><li data-g="c">Computer vision</li><li data-g="c">Fine-tuning</li>
+      <li data-g="d">Python</li><li data-g="d">FastAPI</li><li data-g="d">PostgreSQL</li><li data-g="d">Docker</li>
+      <li data-g="e">TypeScript</li><li data-g="e">React</li><li data-g="e">Data visualisation</li>
+    </ul>
+  </section>
+
+  <!-- ABOUT / retriever -->
+  <section class="about" id="about" data-section="retriever" aria-labelledby="h-about">
+    <!-- Photo: drop a portrait at assets/photo.jpg (4:5, ~1000x1250). Until then the placeholder shows. -->
+    <figure class="portrait" id="portrait">
+      <svg class="portrait-svg" viewBox="0 0 480 530" role="img" aria-labelledby="portraitTitle">
+        <title id="portraitTitle">Portrait of Bhuvansai</title>
+        <defs>
+          <clipPath id="pClip"><rect id="pClipRect" x="60" y="40" width="360" height="450" rx="34"/></clipPath>
+          <clipPath id="ringBack"><rect x="-60" y="-60" width="600" height="410"/></clipPath>
+          <clipPath id="ringFront"><rect x="-60" y="350" width="600" height="300"/></clipPath>
+        </defs>
+        <!-- back half of the orbit, behind the photo -->
+        <g transform="rotate(-10 240 350)"><g class="ring" clip-path="url(#ringBack)">
+          <path class="ring-line" d="M14 350a226 64 0 1 0 452 0a226 64 0 1 0-452 0"/>
+          <g style="color:var(--violet)"><use href="#plane" x="-13" y="-13" width="26" height="26"/><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M14 350a226 64 0 1 0 452 0a226 64 0 1 0-452 0"/></g>
+          <g style="color:var(--orange)"><use href="#plane" x="-10" y="-10" width="20" height="20"/><animateMotion dur="9s" begin="-4.5s" repeatCount="indefinite" rotate="auto" path="M14 350a226 64 0 1 0 452 0a226 64 0 1 0-452 0"/></g>
+        </g></g>
+        <g clip-path="url(#pClip)"><g id="pInner">
+          <rect class="ph-bg" x="60" y="40" width="360" height="450"/>
+          <circle class="ph-fig" cx="240" cy="212" r="70"/>
+          <path class="ph-fig" d="M100 520c0-112 62-188 140-188s140 76 140 188z"/>
+          <text class="ph-label" x="240" y="104">[Your photo]</text>
+          <image href="assets/photo.jpg" x="60" y="40" width="360" height="450" preserveAspectRatio="xMidYMid slice" onerror="this.remove()"/>
+        </g></g>
+        <!-- front half of the orbit, over the photo -->
+        <g transform="rotate(-10 240 350)"><g class="ring" clip-path="url(#ringFront)">
+          <path class="ring-line" d="M14 350a226 64 0 1 0 452 0a226 64 0 1 0-452 0"/>
+          <g style="color:var(--violet)"><use href="#plane" x="-13" y="-13" width="26" height="26"/><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M14 350a226 64 0 1 0 452 0a226 64 0 1 0-452 0"/></g>
+          <g style="color:var(--orange)"><use href="#plane" x="-10" y="-10" width="20" height="20"/><animateMotion dur="9s" begin="-4.5s" repeatCount="indefinite" rotate="auto" path="M14 350a226 64 0 1 0 452 0a226 64 0 1 0-452 0"/></g>
+        </g></g>
+      </svg>
+      <span class="sticker s1"><i class="pdot"></i>Open to roles</span>
+      <span class="sticker s2"><svg width="15" height="15"><use href="#pin"/></svg>[City]</span>
+      <span class="sticker s3">[Fun fact about you]</span>
+    </figure>
+
+    <div class="about-copy">
+      <h2 class="h-big" id="h-about" data-split>The human in the loop</h2>
+      <p class="statement" id="statement">I'm an AI engineer who likes the unglamorous half of agents: the tool contracts, the evals, the retries, and the traces that tell you why a run went sideways. [Add one sentence on your background and what you want to do next.]</p>
+      <dl class="facts">
+        <div><dt>Based in</dt><dd>[City, Country]</dd></div>
+        <div><dt>Currently</dt><dd>[What you're studying or building]</dd></div>
+        <div><dt>Focus</dt><dd>Agents, evals, retrieval</dd></div>
+        <div><dt>Off the clock</dt><dd>[Two things you do for fun]</dd></div>
+      </dl>
+      <div class="about-links">
+        <a class="btn dark" href="resume.pdf" download data-magnet>Download resume</a>
+        <a class="btn ghost" href="https://github.com/Bhuvansai-16" rel="noopener" data-magnet>GitHub <svg width="18" height="18"><use href="#arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / tools -->
+  <section class="work" id="work" data-section="tools" aria-labelledby="h-work">
+    <div class="sec-head">
+      <h2 id="h-work" class="h-big" data-split>Selected work</h2>
+      <p class="muted">Each project is a tool. Here is what goes in, what comes out, and the hard part in between.</p>
+    </div>
+    <div class="stack">
+
+      <article class="pcard" style="--c:var(--violet);--cs:var(--violet-s)" data-flow="question,planner,workers,verifier,report">
+        <div class="pc-copy">
+          <p class="pc-sig mono"><b>research_agent</b>(question: str) -> Report</p>
+          <h3>Research agent</h3>
+          <p>A planner and three workers that research a question, cite sources, and refuse when the evidence is thin.</p>
+          <dl class="pc-facts">
+            <div><dt>Hard part</dt><dd>[One technical decision and why you made it.]</dd></div>
+            <div><dt>Result</dt><dd>[Metric, e.g. 38% fewer unsupported claims]</dd></div>
+          </dl>
+          <ul class="tags"><li>LangGraph</li><li>FastAPI</li><li>Vector search</li></ul>
+          <p class="pc-links"><a href="#">Code</a><a href="#">Demo</a></p>
+        </div>
+        <div class="pc-art"></div>
+      </article>
+
+      <article class="pcard" style="--c:var(--lime);--cs:var(--lime-s)" data-flow="dataset,runner,judge,scorecard">
+        <div class="pc-copy">
+          <p class="pc-sig mono"><b>eval_harness</b>(dataset, agent) -> Scorecard</p>
+          <h3>Eval harness</h3>
+          <p>Replays agent runs against a golden set and flags regressions per tool call, not just per answer.</p>
+          <dl class="pc-facts">
+            <div><dt>Hard part</dt><dd>[Technical decision and why.]</dd></div>
+            <div><dt>Result</dt><dd>[Metric]</dd></div>
+          </dl>
+          <ul class="tags"><li>Python</li><li>Docker</li><li>LLM-as-judge</li></ul>
+          <p class="pc-links"><a href="#">Code</a><a href="#">Demo</a></p>
+        </div>
+        <div class="pc-art"></div>
+      </article>
+
+      <article class="pcard" style="--c:var(--orange);--cs:var(--orange-s)" data-flow="query,retrieve,rerank,answer">
+        <div class="pc-copy">
+          <p class="pc-sig mono"><b>doc_qa</b>(query: str) -> Answer</p>
+          <h3>Document Q&amp;A</h3>
+          <p>Retrieval over long PDFs with reranking and page-level citations you can click through.</p>
+          <dl class="pc-facts">
+            <div><dt>Hard part</dt><dd>[Technical decision and why.]</dd></div>
+            <div><dt>Result</dt><dd>[Metric]</dd></div>
+          </dl>
+          <ul class="tags"><li>Embeddings</li><li>PostgreSQL</li><li>React</li></ul>
+          <p class="pc-links"><a href="#">Code</a><a href="#">Demo</a></p>
+        </div>
+        <div class="pc-art"></div>
+      </article>
+
+      <article class="pcard" style="--c:var(--pink);--cs:var(--pink-s)" data-flow="image,detector,explainer,defects">
+        <div class="pc-copy">
+          <p class="pc-sig mono"><b>vision_inspector</b>(image: bytes) -> Defects</p>
+          <h3>Vision inspector</h3>
+          <p>A vision model that finds defects and explains them in plain language for line operators.</p>
+          <dl class="pc-facts">
+            <div><dt>Hard part</dt><dd>[Technical decision and why.]</dd></div>
+            <div><dt>Result</dt><dd>[Metric]</dd></div>
+          </dl>
+          <ul class="tags"><li>PyTorch</li><li>Computer vision</li></ul>
+          <p class="pc-links"><a href="#">Code</a><a href="#">Demo</a></p>
+        </div>
+        <div class="pc-art"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GITHUB / memory: data from data/github.json (scripts/github.mjs) or GitHub's public calendar -->
+  <section class="gh" id="github" data-section="memory" aria-labelledby="h-gh">
+    <div class="sec-head">
+      <h2 id="h-gh" class="h-big" data-split>Shipping log</h2>
+      <p class="muted">Every square is a day of commits, pull requests, and reviews on GitHub.</p>
+    </div>
+    <div class="gh-card" id="ghCard" data-state="loading">
+      <div class="gh-top">
+        <a class="gh-id" href="https://github.com/Bhuvansai-16" rel="noopener">
+          <span class="gh-mark"><svg width="26" height="26" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></span>
+          <span class="gh-total"><b id="ghTotal">0</b><small id="ghLabel">contributions</small></span>
+        </a>
+        <div class="gh-years" id="ghYears" role="group" aria-label="Year"></div>
+        <span class="gh-chip" id="ghChip"><i></i>Loading GitHub data</span>
+      </div>
+      <div class="gh-scroll" id="ghScroll"><svg class="gh-grid" id="ghGrid" role="img" aria-label="GitHub contribution calendar"></svg></div>
+      <div class="gh-foot">
+        <dl class="gh-stats">
+          <div><dt>Current streak</dt><dd id="ghCur">-</dd></div>
+          <div><dt>Longest streak</dt><dd id="ghLong">-</dd></div>
+          <div><dt>Busiest day</dt><dd id="ghBest">-</dd></div>
+        </dl>
+        <p class="gh-legend" aria-hidden="true">Less <i data-l="0"></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i> More</p>
+      </div>
+      <p class="gh-msg" id="ghMsg" role="status"></p>
+      <div class="gh-tip" id="ghTip" aria-hidden="true"></div>
+    </div>
+    <p class="gh-cta muted">Want to dive deeper? <a href="#contact">Scroll to contact and let's chat.</a></p>
+  </section>
+
+  <!-- EXPERIENCE / subgraph -->
+  <section class="exp" id="experience" data-section="subgraph" aria-labelledby="h-exp">
+    <div class="exp-side">
+      <h2 id="h-exp" class="h-big" data-split>Experience</h2>
+      <p class="muted">[Role], [Company]<br>[Dates] · [Location]</p>
+      <svg class="sub-art" viewBox="0 0 440 280" role="img" aria-label="System diagram: three agents call a tool layer backed by a data layer">
+        <g class="sub-edges" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path class="flow" id="s1" d="M118 54H168"/><path class="flow" id="s2" d="M262 54H312"/>
+          <path class="flow" id="s3" d="M215 80V150"/><path class="flow" id="s4" d="M330 215H278" />
+        </g>
+        <g class="sub-nodes" font-family="Geist Mono, monospace" font-size="12" text-anchor="middle">
+          <rect x="24" y="30" width="94" height="48" rx="14"/><text x="71" y="59">Agent A</text>
+          <rect x="168" y="30" width="94" height="48" rx="14"/><text x="215" y="59">Agent B</text>
+          <rect x="312" y="30" width="94" height="48" rx="14"/><text x="359" y="59">Agent C</text>
+          <rect x="130" y="150" width="170" height="130" rx="0" class="ghost-r"/>
+          <rect x="140" y="190" width="150" height="50" rx="14"/><text x="215" y="220">Tool layer</text>
+          <rect x="330" y="190" width="94" height="50" rx="14" transform="translate(0 0)"/><text x="377" y="220">Data layer</text>
+        </g>
+        <circle r="4.5" class="dot"><animateMotion dur="2.4s" repeatCount="indefinite" path="M118 54H168 M168 54H262 M262 54H312"/></circle>
+        <circle r="4.5" class="dot"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M215 80V150"/></circle>
+      </svg>
+    </div>
+    <div class="exp-main">
+      <ol class="tl" id="tl">
+        <li><h3>[Outcome 1]</h3><p>[What you shipped and what changed.]</p></li>
+        <li><h3>[Outcome 2]</h3><p>[A number if you have one.]</p></li>
+        <li><h3>[Outcome 3]</h3><p>[What you owned end to end.]</p></li>
+        <li><h3>[Outcome 4]</h3><p>[Something you learned or led.]</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- EDUCATION / verifier -->
+  <section class="edu" id="education" data-section="verifier" aria-labelledby="h-edu">
+    <h2 id="h-edu" class="h-big" data-split>Checks passed</h2>
+    <ul class="checks">
+      <li><svg class="ck" width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20"/><path d="m13 23 6 6 12-13"/></svg><div><h3>[Degree], [Institution]</h3><p class="muted">[Score] · [Years]</p></div></li>
+      <li><svg class="ck" width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20"/><path d="m13 23 6 6 12-13"/></svg><div><h3>[Achievement 1]</h3><p class="muted">[Detail] · [Year]</p></div></li>
+      <li><svg class="ck" width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20"/><path d="m13 23 6 6 12-13"/></svg><div><h3>[Achievement 2]</h3><p class="muted">[Detail] · [Year]</p></div></li>
+    </ul>
+  </section>
+
+  <!-- CERTIFICATIONS / evals: replace each href="#" with the credential URL -->
+  <section class="certs" id="certifications" data-section="evals" aria-labelledby="h-certs">
+    <div class="sec-head">
+      <h2 id="h-certs" class="h-big" data-split>Certifications and badges</h2>
+      <p class="muted">The evals I've passed. Each badge links to its credential.</p>
+    </div>
+    <ul class="badges">
+      <li><a class="badge" href="#">
+        <span class="b-tile"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke-width="6.5" stroke-linecap="round"><path d="M20.5 16.5 9.5 24" stroke="#EA4335"/><path d="m9.5 24 11 7.5" stroke="#4285F4"/><path d="m27.5 16.5 11 7.5" stroke="#34A853"/><path d="m38.5 24-11 7.5" stroke="#FBBC04"/></g></svg><span class="b-check"><svg width="14" height="14"><use href="#check"/></svg></span></span>
+        <b>[Certification name]</b><small>Google Developers · [Year]</small></a></li>
+      <li><a class="badge" href="#">
+        <span class="b-tile"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#20BEFF" stroke-width="3.6"><path d="M17.5 9v30"/><path d="M31.5 18.5 18.5 30.5"/><path d="m24 25.4 9 13.6"/></g></svg><span class="b-check"><svg width="14" height="14"><use href="#check"/></svg></span></span>
+        <b>[Course or badge]</b><small>Kaggle · [Year]</small></a></li>
+      <li><a class="badge" href="#">
+        <span class="b-tile"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="6" fill="#0056D2"/><text x="24" y="27.6" text-anchor="middle" fill="#fff" font-family="Geist, system-ui, sans-serif" font-size="9.4" font-weight="600" letter-spacing="-.2">coursera</text></svg><span class="b-check"><svg width="14" height="14"><use href="#check"/></svg></span></span>
+        <b>[Course name]</b><small>Coursera · [Year]</small></a></li>
+      <li><a class="badge" href="#">
+        <span class="b-tile"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#F25022" d="M6 6h17v17H6z"/><path fill="#7FBA00" d="M25 6h17v17H25z"/><path fill="#00A4EF" d="M6 25h17v17H6z"/><path fill="#FFB900" d="M25 25h17v17H25z"/></svg><span class="b-check"><svg width="14" height="14"><use href="#check"/></svg></span></span>
+        <b>[Certification name]</b><small>Microsoft · [Year]</small></a></li>
+      <li><a class="badge" href="#">
+        <span class="b-tile"><svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="25" text-anchor="middle" fill="#232F3E" font-family="Geist, system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="-.6">aws</text><g fill="none" stroke="#FF9900" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 31q14.5 8 29 0"/><path d="m34.6 28.9 4.3 1.8-1.3 4.4"/></g></svg><span class="b-check"><svg width="14" height="14"><use href="#check"/></svg></span></span>
+        <b>[AWS certification]</b><small>Amazon Web Services · [Year]</small></a></li>
+      <li><a class="badge" href="#">
+        <span class="b-tile"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke-width="5"><path pathLength="100" stroke="#34A853" stroke-dasharray="22 78" d="M14 35H34A7.5 7.5 0 0 0 34 20 10 10 0 0 0 14.6 20.5 7.3 7.3 0 0 0 14 35Z"/><path pathLength="100" stroke="#4285F4" stroke-dasharray="26 74" stroke-dashoffset="-22" d="M14 35H34A7.5 7.5 0 0 0 34 20 10 10 0 0 0 14.6 20.5 7.3 7.3 0 0 0 14 35Z"/><path pathLength="100" stroke="#EA4335" stroke-dasharray="29 71" stroke-dashoffset="-48" d="M14 35H34A7.5 7.5 0 0 0 34 20 10 10 0 0 0 14.6 20.5 7.3 7.3 0 0 0 14 35Z"/><path pathLength="100" stroke="#FBBC04" stroke-dasharray="23 77" stroke-dashoffset="-77" d="M14 35H34A7.5 7.5 0 0 0 34 20 10 10 0 0 0 14.6 20.5 7.3 7.3 0 0 0 14 35Z"/></g></svg><span class="b-check"><svg width="14" height="14"><use href="#check"/></svg></span></span>
+        <b>[Google Cloud certification]</b><small>Google Cloud · [Year]</small></a></li>
+    </ul>
+  </section>
+
+  <!-- CONTACT / interrupt -->
+  <section class="contact" id="contact" data-section="interrupt" aria-labelledby="h-contact">
+    <div class="drift" id="drift" aria-hidden="true"></div>
+    <div class="ct-inner">
+      <h2 class="mega" id="h-contact" data-split>This run is waiting for you.</h2>
+      <p class="ct-sub">[One-line invitation: what you'd like to hear about.]</p>
+      <div class="ct-grid">
+        <form id="contactForm" novalidate>
+          <div class="field"><label for="cName">Name</label><input id="cName" name="name" autocomplete="name" aria-describedby="eName"><p class="err" id="eName"></p></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" name="email" type="email" autocomplete="email" aria-describedby="eEmail"><p class="err" id="eEmail"></p></div>
+          <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="4" aria-describedby="eMsg"></textarea><p class="err" id="eMsg"></p></div>
+          <button class="btn light" id="sendBtn" type="submit" data-magnet>Send message <svg width="18" height="18"><use href="#arrow"/></svg></button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+        <ul class="ct-links">
+          <li><span class="mono">Email</span><a id="emailLink" href="mailto:hello@example.com">[Email]</a><button type="button" class="copy" id="copyEmail">Copy</button></li>
+          <li><span class="mono">LinkedIn</span><a href="#">[LinkedIn]</a></li>
+          <li><span class="mono">GitHub</span><a href="https://github.com/Bhuvansai-16" rel="noopener">github.com/Bhuvansai-16</a></li>
+          <li><span class="mono">Resume</span><a href="resume.pdf" download>Download</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <span>© 2026 Bhuvansai</span>
+        <span class="mono" id="summary">Run complete · 1 of 6 stops · 0:00</span>
+        <button type="button" class="to-top" id="toTop">Back to top <svg width="18" height="18" style="rotate:-90deg"><use href="#arrow"/></svg></button>
+      </div>
+    </div>
+    <p class="wordmark" id="wordmark" aria-hidden="true">Bhuvansai</p>
+  </section>
+</main>
+
+<button type="button" class="fab" id="chatBtn" aria-expanded="false" aria-controls="chat"><svg width="18" height="18"><use href="#plane"/></svg>Ask my agent</button>
+<aside class="chat" id="chat" aria-label="Ask about my work" data-lenis-prevent>
+  <header><div class="chat-id"><span class="avatar" aria-hidden="true"><img src="assets/photo.jpg" alt="" width="38" height="38" onerror="this.remove()">B</span><div><h2>Ask about my work</h2><p class="mono muted">Bhuvansai's agent · answers from this page</p></div></div><button type="button" class="nav-icon" id="chatClose" aria-label="Close chat">✕</button></header>
+  <div class="chat-log" id="chatLog" aria-live="polite">
+    <div class="suggest" id="suggest">
+      <button type="button">What have you built with agents?</button>
+      <button type="button">Which skills do you use most?</button>
+      <button type="button">Tell me about your internship.</button>
+      <button type="button">How do I contact you?</button>
+    </div>
+  </div>
+  <form class="chat-form" id="chatForm"><label class="sr" for="chatInput">Ask a question</label><input id="chatInput" placeholder="Ask a question…" autocomplete="off"><button class="btn dark sm" type="submit" aria-label="Send question"><svg width="18" height="18"><use href="#arrow"/></svg></button></form>
+</aside>
+
+<dialog class="palette" id="palette" aria-label="Command menu">
+  <input id="palInput" placeholder="Jump to a section or run a command" aria-label="Command" autocomplete="off">
+  <ul id="palList" role="listbox" data-lenis-prevent></ul>
+</dialog>
+
+<div class="sr" id="announce" role="status" aria-live="polite"></div>
+<div id="fly" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

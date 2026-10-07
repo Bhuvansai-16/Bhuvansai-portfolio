@@ -1,0 +1,14 @@
+# Not part of the deployed site. Vercel turns every file in api/ into a function, so tests must stay out.
+api/**/*.test.ts
+agent/**/*.test.ts
+agent/eval.ts
+src/**/*.test.js
+# Secrets and originals (also kept out of git); matters when deploying with the Vercel CLI from this folder
+src/.env
+.env
+private/
+# Local tooling and docs
+.superpowers/
+.claude/
+docs/
+legacy-static/

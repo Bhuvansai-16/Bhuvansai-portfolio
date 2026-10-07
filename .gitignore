@@ -1,0 +1,6 @@
+node_modules
+.env
+dist
+# originals that must not be deployed or committed (the site uses public/PP.webp)
+private/
+.superpowers/
