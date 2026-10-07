@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import { gsap, motion, useGsap } from '../lib/motion';
+import { gsap, ScrollTrigger, motion, useGsap } from '../lib/motion';
 import { HERO } from '../content';
 import { Icon, SplitWords } from './ui';
 import HeroScene from './HeroScene';
@@ -31,10 +31,12 @@ export default function Hero({ onAsk, onTour }) {
       if (rFlow.width === 0 || rYou.width === 0 || rBtn.width === 0) return;
 
       // One smooth S, a single cubic so it cannot kink: leaves "you" straight down, sweeps left, drops straight into the button.
-      const sx = (rYou.left + rYou.right) / 2 - rFlow.left;
-      const sy = rYou.bottom - rFlow.top + 4;
-      const ex = (rBtn.left + rBtn.right) / 2 - rFlow.left;
-      const ey = rBtn.top - rFlow.top - 10;
+      // Rects are on screen; the svg draws in the hero's own (possibly zoomed) pixels.
+      const z = flowRef.current.currentCSSZoom || 1;
+      const sx = ((rYou.left + rYou.right) / 2 - rFlow.left) / z;
+      const sy = (rYou.bottom - rFlow.top) / z + 4;
+      const ex = ((rBtn.left + rBtn.right) / 2 - rFlow.left) / z;
+      const ey = (rBtn.top - rFlow.top) / z - 10;
       const h = (ey - sy) * 0.68; // handle length: longer = tighter bends at both ends
       const line = `M ${sx} ${sy} C ${sx} ${sy + h}, ${ex} ${ey - h}, ${ex} ${ey - 9}`;
       const head = `M ${ex - 6.5} ${ey - 9} L ${ex} ${ey} L ${ex + 6.5} ${ey - 9}`;
@@ -46,12 +48,14 @@ export default function Hero({ onAsk, onTour }) {
     animId = requestAnimationFrame(update);
     const timer = setTimeout(update, 120);
     addEventListener('resize', update);
+    ScrollTrigger.addEventListener('refresh', update); // after App re-fits the page scale
     document.fonts?.ready.then(update);
 
     return () => {
       cancelAnimationFrame(animId);
       clearTimeout(timer);
       removeEventListener('resize', update);
+      ScrollTrigger.removeEventListener('refresh', update);
     };
   }, []);
 

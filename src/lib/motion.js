@@ -25,13 +25,20 @@ export function useGsap(scope, fn, deps = []) {
 // than the room left under the tour band, scale it down with CSS zoom (never below 60%: that only
 // happens on very short or zoomed-in windows, where each CSS pixel is already physically bigger).
 // Phones scroll normally instead, so their text never gets tiny.
+// Desktop starts from a page scale (--z): 80% up to 1536px wide, like the browser's 80% zoom, growing back
+// to 100% by 1920px so big screens don't look empty. The other blocks take --z in CSS.
+export const pageZoom = () => (innerWidth < 700 ? 1 : clamp(innerWidth / 1920, 0.8, 1));
+
 export function fitScreens() {
+  const z = pageZoom();
+  document.documentElement.style.setProperty('--z', z);
   document.querySelectorAll('.screen > .fit').forEach(fit => {
     fit.style.zoom = '';
     if (innerWidth < 700) return;
+    fit.style.zoom = z;
     const cs = getComputedStyle(fit.parentElement), room = innerHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
     if (fit.getBoundingClientRect().height <= room) return;
-    let lo = 0.6, hi = 1; // text reflows as it shrinks, so search for the largest zoom that fits
+    let lo = 0.6, hi = z; // text reflows as it shrinks, so search for the largest zoom that fits
     for (let k = 0; k < 6; k++) {
       const z = (lo + hi) / 2;
       fit.style.zoom = z;

@@ -47,10 +47,11 @@ export async function runAction({ name, args = {}, say }, ui) {
 // Measure from the (non-sticky) stack instead: the scroll position that shows `el` at its sticky top.
 export function restingScrollY(el, win = globalThis) {
   const stack = el.parentElement, gap = parseFloat(win.getComputedStyle(stack).rowGap) || 0;
+  const z = el.currentCSSZoom || 1; // the section may be scaled with CSS zoom: sizes are unscaled, the rect is on screen
   let y = stack.getBoundingClientRect().top + win.scrollY;
   for (const card of stack.children) {
     if (card === el) break;
-    y += card.offsetHeight + gap;
+    y += (card.offsetHeight + gap) * z;
   }
-  return y - parseFloat(win.getComputedStyle(el).top);
+  return y - parseFloat(win.getComputedStyle(el).top) * z;
 }

@@ -148,6 +148,7 @@ export const CONTACT = {
 
 // Pip's offline fallback answers from these when the agent can't be reached. t = keywords it matches on, src = sections it links to.
 export const KB = [
+  { t: 'hello hi hey greetings howdy sup morning afternoon evening pip', a: `Hey there! I'm Pip, ${PROFILE.name}'s portfolio droid. Great to meet you! Want me to show you around ${PROFILE.name}'s work, or is there a specific project or skill you'd like to check out?`, src: ['work', 'about'] },
   { t: 'agents built projects research agent langgraph tool calling', a: 'I build multi-agent systems: MAIRA runs deep research with verification loops, and Receipts writes blind regression tests to check pull requests. All four projects are in the work section.', src: ['work'] },
   { t: 'skills stack technologies python fastapi pytorch languages use most', a: 'Day to day: Python, FastAPI, LangGraph, LangChain, and RAG with PGVector and Redis, plus React and TypeScript on the front end.', src: ['skills', 'about'] },
   { t: 'about you who are you background hobbies based where location live', a: "I'm Bhuvansai, an AI engineer based in Hyderabad, India. Off the clock: films, music, and curiosity.", src: ['about'] },
