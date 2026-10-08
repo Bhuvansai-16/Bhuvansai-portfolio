@@ -97,7 +97,8 @@ a{color:inherit}
 .themes button[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}
 
 /* rail */
-.rail{position:fixed;right:18px;top:50%;translate:0 -50%;width:34px;height:min(60vh,520px);z-index:var(--z-rail);opacity:0;transform:translateX(24px);pointer-events:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+/* centred in the band between the nav (top) and Pip's corner (bottom), never reaching down to Pip */
+.rail{position:fixed;right:18px;top:84px;bottom:132px;margin-block:auto;width:34px;height:min(60vh,520px,calc(100vh - 216px));z-index:var(--z-rail);opacity:0;transform:translateX(24px);pointer-events:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rail.show{opacity:1;transform:none;pointer-events:auto}
 .rail svg{width:100%;height:100%;overflow:visible;display:block}
 .rail .track{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:3 6;stroke-linecap:round}
