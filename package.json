@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "postinstall": "node scripts/fix-langgraph-sdk.mjs",
     "github": "node --env-file-if-exists=src/.env scripts/github.mjs",
     "test": "node --test \"src/**/*.test.js\" \"agent/**/*.test.ts\" \"api/**/*.test.ts\"",
     "typecheck": "tsc --noEmit -p tsconfig.json",
