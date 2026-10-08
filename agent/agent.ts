@@ -1,6 +1,9 @@
 // Pip: a Deep Agent on Groq. runAgent() turns one chat request into the events the browser reads.
 import { createDeepAgent, registerHarnessProfile } from 'deepagents';
 import { initChatModel } from 'langchain';
+// initChatModel loads the provider by name at run time, which Vercel's file tracer can't follow;
+// without this import @langchain/groq is left out of the deployed function and every call fails.
+import '@langchain/groq';
 import { actionTools, type Action } from './tools.ts';
 import { seedFiles } from './files.ts';
 import { SYSTEM_PROMPT } from './prompt.ts';
@@ -101,6 +104,7 @@ export async function* runAgent(messages: ChatMessage[], page: { section?: strin
       return;
     } catch (err) {
       if (signal?.aborted) return;
+      console.error(`[pip] ${models[i]} failed:`, (err as Error)?.message ?? err); // shows in the host's function logs
       if ((err as Error)?.name === 'GraphRecursionError') {
         yield { type: 'text', delta: 'I got lost there. Try rephrasing?' };
         yield { type: 'done' };
