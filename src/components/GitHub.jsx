@@ -3,8 +3,8 @@ import { gsap, ScrollTrigger, motion, fine, clamp, useGsap, asset } from '../lib
 import { PROFILE } from '../content';
 import { SplitWords } from './ui';
 
-// Data: public/data/github.json (made by scripts/github.mjs with your token, which never ships to the browser),
-// else GitHub's public calendar via a no-token endpoint. Both: { total: {year: n}, contributions: [{date, count, level}] }
+// Data: /api/github (your token, server-side), else public/data/github.json (scripts/github.mjs), else GitHub's
+// public calendar via a no-token endpoint. All: { total: {year: n}, contributions: [{date, count, level}] }
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const TODAY = new Date().toISOString().slice(0, 10), THIS_YEAR = +TODAY.slice(0, 4);
 const S = 16, C = 12, LX = 30, TY = 20; // cell step, cell size, label gutters
@@ -43,10 +43,11 @@ export default function GitHub() {
 
   useEffect(() => {
     const ac = new AbortController();
-    // The token-built file counts private contributions; the public feed doesn't, so it is only a fallback.
+    // Live from /api/github (cached ~10 min), else the file the nightly Action writes. Both count private
+    // contributions; the public feed doesn't, so it is the last resort.
     const load = async () => {
       const years = Array.from({ length: THIS_YEAR - 2023 + 1 }, (_, i) => `y=${2023 + i}`).join('&');
-      for (const url of [asset('data/github.json'), `https://github-contributions-api.jogruber.de/v4/${PROFILE.github}?${years}`]) {
+      for (const url of ['/api/github', asset('data/github.json'), `https://github-contributions-api.jogruber.de/v4/${PROFILE.github}?${years}`]) {
         try {
           const r = await fetch(url, { signal: ac.signal });
           const d = r.ok ? await r.json() : null;
