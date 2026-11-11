@@ -214,7 +214,7 @@ export default function Work() {
               <p className="pc-sig mono"><b>{p.fn}</b>{p.args}</p>
               <div className="pc-title-row">
                 <h3>{p.title}</h3>
-                <p className="pc-links"><a href={p.code} target={p.code.startsWith('http') ? '_blank' : undefined} rel={p.code.startsWith('http') ? 'noreferrer' : undefined}>Code</a>{p.demo && <a href={p.demo}>Demo</a>}</p>
+                <p className="pc-links"><a href={p.code} target={p.code.startsWith('http') ? '_blank' : undefined} rel={p.code.startsWith('http') ? 'noreferrer' : undefined}>Code</a>{p.demo && <a href={p.demo} target="_blank" rel="noreferrer">Live</a>}</p>
               </div>
               <p>{p.desc}</p>
               <dl className="pc-facts">

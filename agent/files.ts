@@ -29,6 +29,7 @@ export const DOCS: Record<string, Doc> = {
       `Result: ${p.result}`,
       `Stack: ${p.tags.join(', ')}`,
       p.code && `Code: open_link "code:${p.id}"`,
+      p.demo && `Live demo: open_link "demo:${p.id}"`,
       p.architecture && `Architecture diagram: show_architecture "${p.id}"`,
       `On the page: navigate_to "project:${p.id}"`,
     ),

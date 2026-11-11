@@ -59,7 +59,16 @@ export const PROJECTS = [
     hard: 'Keeping the test writer blind to the pull request while running reproducible base/PR comparisons in isolated sandboxes and using deterministic rules for the final verdict.',
     result: '61% of wrong patches caught · 66% of real fixes confirmed · 52% fewer tokens after optimization.',
     tags: ['Python', 'AI Agents', 'Nemotron', 'Deepagents', 'GitHub', 'Nebius', 'Tavily', 'LangSmith'],
-    code: 'https://github.com/Bhuvansai-16/Receipts-backend.git', demo: null, architecture: 'receipts',
+    code: 'https://github.com/Bhuvansai-16/Receipts-backend.git', demo: 'https://receipts-frontend-six.vercel.app/', architecture: 'receipts',
+  },
+  {
+    id: 'countersign', fn: 'dispute', args: '(order_id) → Evidence', title: 'Countersign', color: 'sky',
+    desc: 'Signed intent receipts for AI-agent purchases on PayPal, plus a dispute agent that verifies the receipt, weighs fight, offer, or accept, and drafts the response for the seller to approve.',
+    hard: 'Sealing a hash-chained, Ed25519-signed receipt into the PayPal order before payment, and keeping the LLM away from facts: fees, deadlines, economics, and every PayPal call are deterministic tools behind a double-gated human approval.',
+    result: 'Live on PayPal sandbox · 181 backend tests · 11 golden LLM evals · Built for the PayPal AI Hackathon',
+    tags: ['Python', 'FastAPI', 'Deepagents', 'LangGraph', 'MCP', 'PayPal', 'PostgreSQL', 'Ed25519'],
+    code: 'https://github.com/Bhuvansai-16/Countersign-backend.git', demo: 'https://countersign-black.vercel.app/',
+    flow: ['Agent quote', 'Buyer confirms', 'Signed seal', 'Dispute agent', 'Approve'],
   },
   {
     id: 'voice-agent', fn: 'voice_agent', args: '(audio) → response', title: 'Voice Agent Harness', color: 'orange',
@@ -149,7 +158,7 @@ export const CONTACT = {
 // Pip's offline fallback answers from these when the agent can't be reached. t = keywords it matches on, src = sections it links to.
 export const KB = [
   { t: 'hello hi hey greetings howdy sup morning afternoon evening pip', a: `Hey there! I'm Pip, ${PROFILE.name}'s portfolio droid. Great to meet you! Want me to show you around ${PROFILE.name}'s work, or is there a specific project or skill you'd like to check out?`, src: ['work', 'about'] },
-  { t: 'agents built projects research agent langgraph tool calling', a: 'I build multi-agent systems: MAIRA runs deep research with verification loops, and Receipts writes blind regression tests to check pull requests. All four projects are in the work section.', src: ['work'] },
+  { t: 'agents built projects research agent langgraph tool calling', a: 'I build multi-agent systems: MAIRA runs deep research with verification loops, and Receipts writes blind regression tests to check pull requests, and Countersign defends PayPal disputes with signed purchase receipts. All five projects are in the work section.', src: ['work'] },
   { t: 'skills stack technologies python fastapi pytorch languages use most', a: 'Day to day: Python, FastAPI, LangGraph, LangChain, and RAG with PGVector and Redis, plus React and TypeScript on the front end.', src: ['skills', 'about'] },
   { t: 'about you who are you background hobbies based where location live', a: "I'm Bhuvansai, an AI engineer based in Hyderabad, India. Off the clock: films, music, and curiosity.", src: ['about'] },
   { t: 'github contributions commits activity open source streak calendar', a: 'My GitHub activity is in the shipping log: a live contribution calendar with streaks and my busiest day.', src: ['github'] },

@@ -22,6 +22,7 @@ export const LINKS = {
   resume: PROFILE.resume,
   email: `mailto:${PROFILE.email}`,
   ...Object.fromEntries(PROJECTS.filter(p => p.code).map(p => [`code:${p.id}`, p.code])),
+  ...Object.fromEntries(PROJECTS.filter(p => p.demo).map(p => [`demo:${p.id}`, p.demo])),
   ...Object.fromEntries(CERTS.map(c => [`cert:${c.icon}`, c.url])),
   ...Object.fromEntries(products.filter(p => PRODUCT_KEYS[p.name]).map(p => [`product:${PRODUCT_KEYS[p.name]}`, p.url])),
   ...Object.fromEntries(EXPERIENCE.filter(j => j.certificate).map(j => [`post:${j.id.split('-')[0]}`, j.certificate])),
