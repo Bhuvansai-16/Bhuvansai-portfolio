@@ -67,8 +67,7 @@ export const PROJECTS = [
     hard: 'Sealing a hash-chained, Ed25519-signed receipt into the PayPal order before payment, and keeping the LLM away from facts: fees, deadlines, economics, and every PayPal call are deterministic tools behind a double-gated human approval.',
     result: 'Live on PayPal sandbox · 181 backend tests · 11 golden LLM evals · Built for the PayPal AI Hackathon',
     tags: ['Python', 'FastAPI', 'Deepagents', 'LangGraph', 'MCP', 'PayPal', 'PostgreSQL', 'Ed25519'],
-    code: 'https://github.com/Bhuvansai-16/Countersign-backend.git', demo: 'https://countersign-black.vercel.app/',
-    flow: ['Agent quote', 'Buyer confirms', 'Signed seal', 'Dispute agent', 'Approve'],
+    code: 'https://github.com/Bhuvansai-16/Countersign-backend.git', demo: 'https://countersign-black.vercel.app/', architecture: 'countersign',
   },
   {
     id: 'voice-agent', fn: 'voice_agent', args: '(audio) → response', title: 'Voice Agent Harness', color: 'orange',

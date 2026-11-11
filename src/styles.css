@@ -203,13 +203,17 @@ a{color:inherit}
 .receipts-diagram marker path{fill:#0E0E12}
 .receipts-stage{font:600 11px var(--mono);letter-spacing:.08em;fill:var(--muted)}
 .receipts-packet{fill:var(--c)}
+.pc-art .countersign-link,.architecture-modal .countersign-link{fill:none;stroke:#0E0E12;stroke-width:2;stroke-dasharray:5 7;stroke-linecap:round;animation:dash 1.2s linear infinite}
+.countersign-diagram marker path{fill:#0E0E12}
+.countersign-stage{font:600 11px var(--mono);letter-spacing:.08em;fill:var(--muted)}
+.countersign-packet{fill:var(--c)}
 .pc-art .voice-link,.architecture-modal .voice-link{fill:none;stroke:#0E0E12;stroke-width:2;stroke-dasharray:5 7;stroke-linecap:round;animation:dash 1.2s linear infinite}
 .voice-diagram marker path{fill:#0E0E12}
 .voice-packet{fill:var(--c)}
 .pc-art .mediassist-link,.architecture-modal .mediassist-link{fill:none;stroke:#0E0E12;stroke-width:2;stroke-dasharray:5 7;stroke-linecap:round;animation:dash 1.2s linear infinite}
 .mediassist-diagram marker path{fill:#0E0E12}
 .mediassist-packet{fill:var(--c)}
-@media(prefers-reduced-motion:reduce){.pc-art .maira-link,.pc-art .receipts-link,.pc-art .voice-link,.pc-art .mediassist-link{animation:none}}
+@media(prefers-reduced-motion:reduce){.pc-art .maira-link,.pc-art .receipts-link,.pc-art .countersign-link,.pc-art .voice-link,.pc-art .mediassist-link{animation:none}}
 .architecture-modal{width:min(1080px,calc(100vw - 32px));max-width:none;max-height:88svh;padding:clamp(16px,3vw,32px);border:1px solid var(--line);border-radius:28px;background:var(--surface);color:var(--ink);box-shadow:0 24px 80px rgb(14 14 18/.3)}
 .architecture-modal::backdrop{background:rgb(14 14 18/.58);backdrop-filter:blur(6px)}
 .architecture-modal>header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}

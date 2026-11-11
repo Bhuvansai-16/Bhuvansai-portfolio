@@ -100,6 +100,34 @@ function ReceiptsDiagram({ idPrefix = '' }) {
   );
 }
 
+function CountersignDiagram({ idPrefix = '' }) {
+  const paths = [
+    ['M175 100H255', '1.4s', '0s'], ['M425 100H505', '1.4s', '-.5s'], ['M675 100H755', '1.4s', '-.9s'],
+    ['M590 140V190H315V240', '2.4s', '-.6s'],
+    ['M175 280H225', '1.2s', '-.3s'], ['M405 280H455', '1.2s', '-.7s'],
+    ['M605 280H650', '1.2s', '-.2s'], ['M770 280H805', '1.2s', '-.8s'],
+  ];
+  return (
+    <svg className="countersign-diagram" viewBox="0 0 930 340" role="img" aria-label="Countersign architecture: a shopping agent quotes over MCP, the buyer confirms the cap and cart on a hosted page, a hash-chained Ed25519-signed intent receipt is sealed into the PayPal order. When a dispute arrives, a Deep Agent checks the receipt, runs the economics and drafts a response, a fact checker validates it, and the seller approves before it is submitted to PayPal Disputes.">
+      <defs><marker id={`${idPrefix}countersign-arrow`} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" /></marker></defs>
+      <path className="countersign-link" d="M175 100H255M425 100H505M675 100H755M590 140V190H315V240M175 280H225M405 280H455M605 280H650M770 280H805" markerEnd={`url(#${idPrefix}countersign-arrow)`} />
+      {motion && paths.map(([path, dur, begin], i) => <circle className="countersign-packet" r="4" key={i}><animateMotion path={path} dur={dur} begin={begin} repeatCount="indefinite" /></circle>)}
+      <text className="countersign-stage" x="15" y="40">AGENT CHECKOUT</text>
+      <text className="countersign-stage" x="15" y="222">DISPUTE DEFENSE</text>
+      <text className="countersign-stage" x="400" y="182">RECEIPT CHECK</text>
+      <ArchitectureNode x={15} y={60} w={160} h={80} lines={['Shopping Agent']} detail="MCP · quotes, never pays" kind="client" />
+      <ArchitectureNode x={255} y={60} w={170} h={80} lines={['Buyer Confirms']} detail="Hosted page · cap + cart" kind="client" />
+      <ArchitectureNode x={505} y={60} w={170} h={80} lines={['Intent Receipt', 'Hash-chained']} detail="Ed25519 signed seal" kind="store" />
+      <ArchitectureNode x={755} y={60} w={160} h={80} lines={['PayPal Order']} detail="custom_id = seal" kind="client" />
+      <ArchitectureNode x={15} y={240} w={160} h={80} lines={['Dispute']} detail="Webhook + poller" kind="client" />
+      <ArchitectureNode x={225} y={240} w={180} h={80} lines={['Deep Agent', 'Facts · economics']} detail="Fight / offer / accept" kind="agent" />
+      <ArchitectureNode x={455} y={240} w={150} h={80} lines={['Fact Checker']} detail="Subagent + rules" kind="agent" />
+      <ArchitectureNode x={650} y={240} w={120} h={80} lines={['Seller', 'Approval']} detail="interrupt_on gate" kind="store" />
+      <ArchitectureNode x={805} y={240} w={110} h={80} lines={['PayPal', 'Disputes']} detail="Evidence · offer" kind="client" />
+    </svg>
+  );
+}
+
 function VoiceAgentDiagram({ idPrefix = '' }) {
   const paths = [
     ['M390 62V95', '1.2s', '0s'], ['M390 153V195', '1.2s', '-.5s'],
@@ -154,6 +182,7 @@ function MediAssistDiagram({ idPrefix = '' }) {
 function ProjectDiagram({ project, index, idPrefix = '' }) {
   return project.architecture === 'maira' ? <MairaDiagram idPrefix={idPrefix} />
     : project.architecture === 'receipts' ? <ReceiptsDiagram idPrefix={idPrefix} />
+    : project.architecture === 'countersign' ? <CountersignDiagram idPrefix={idPrefix} />
       : project.architecture === 'voice-agent' ? <VoiceAgentDiagram idPrefix={idPrefix} />
         : project.architecture === 'mediassist' ? <MediAssistDiagram idPrefix={idPrefix} />
           : <FlowDiagram labels={project.flow} ci={index} />;
